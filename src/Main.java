@@ -23,10 +23,13 @@ public class Main {
         if(Integer.parseInt(val) < 0){
             //remove the negative sign from value
             String newVal = val.replace("-","");
-            System.out.println("The SM is: 1 " + "elements in " + ToBinary(newVal));
+
+            System.out.println("The SM is: 1 + " + "elements in " + ToBinary(newVal));
+            System.out.println("The U1 is: 1 + " + "elements in " +  FindU1(ToBinary(newVal)));
         }else{
             //adding the digits to the array and returning an output
             System.out.println("The SM is: 0 " + "elements in " + ToBinary(val));
+            System.out.println("The U1 is: 0 + " + "elements in " +  FindU1(ToBinary(val)));
         }
     }
 
@@ -63,4 +66,19 @@ public class Main {
 
         return binaryDigits;
     }
+
+
+    //method to negate the binary values
+    static List<Integer> FindU1 (List<Integer> val) {
+        List<Integer> negateBinary = new ArrayList<>();
+
+        for(int i =0; i < val.size(); i++){
+            if(val.get(i) == 0)  negateBinary.add(1);
+            else negateBinary.add(0);
+        }
+
+        return negateBinary;
+
+    }
+
 }
