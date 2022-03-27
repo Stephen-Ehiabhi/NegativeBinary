@@ -4,7 +4,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    public static Boolean isNegative = false;
+   // public static List<Integer> SM = new ArrayList<>();
+   // public static List<Integer> U1 = new ArrayList<>();
+   // public static List<Integer> U2 = new ArrayList<>();
+
     public static void main(String[] args){
+
+
+
+
         //get the value from user
         System.out.println(" ");
         System.out.println("________________________________________________");
@@ -21,15 +30,20 @@ public class Main {
 
         //check if the number is negative or positive integer
         if(Integer.parseInt(val) < 0){
+            isNegative = true;
             //remove the negative sign from value
+
             String newVal = val.replace("-","");
 
-            System.out.println("The SM is: 1 + " + "elements in " + ToBinary(newVal));
-            System.out.println("The U1 is: 1 + " + "elements in " +  FindU1(ToBinary(newVal)));
+            System.out.println("The SM is: [1" + ToBinary(newVal));
+            System.out.println("The U1 is: [1" +  FindU1(ToBinary(newVal)));
+            System.out.println("The U2 is: find the sum of 1 and [1" +  FindU1(ToBinary(newVal)));
         }else{
+
             //adding the digits to the array and returning an output
-            System.out.println("The SM is: 0 " + "elements in " + ToBinary(val));
-            System.out.println("The U1 is: 0 + " + "elements in " +  FindU1(ToBinary(val)));
+            System.out.println("The SM is: [0" + ToBinary(val));
+            System.out.println("The U1 is: [0" +  FindU1(ToBinary(val)));
+            System.out.println("The U2 is: find the sum of 0 and [0" +  FindU1(ToBinary(val)));
         }
     }
 
@@ -57,7 +71,7 @@ public class Main {
        }
 
        //reverse the remainder array
-        for(int i = remainder.size()-1; n < remainder.size(); i--){
+        for(int i = remainder.size()-1; i < remainder.size(); i--){
             //stops the loop if the index is a negative number
             if(i<0) break;
             //stores the value in the binary class
@@ -79,6 +93,45 @@ public class Main {
 
         return negateBinary;
 
+    }
+
+
+    //method to negate the binary values
+    static List<Integer> FindU2 (List<Integer> u1) {
+        int values;
+        List<Integer> U2 = new ArrayList<>();
+
+        //sum the decimal with 1
+       /*int decimalU2 = convertToDecimal(u1) + 1, n = decimalU2;
+
+        //main loop to divide the value until it can no longer be divided
+        for(int i =0; n > 0; i++){
+            //find the remainder
+            values = n % 2;
+            //store each the remainder in the binaryDigits array
+            U2.add(values);
+            //divide the current number by 2
+            n = n / 2;
+        }*/
+
+        return new ArrayList<>();
+
+    }
+
+
+    //method to convert to decimal
+    public static int convertToDecimal(List<Integer> value) {
+        double total;
+        int sum = 0;
+
+        System.out.println(value);
+
+        for (int i = 1; i <= value.size(); i++) {
+            total = value.get(i-1) * Math.pow(2, i - 1);
+            sum += total;
+        }
+
+        return sum;
     }
 
 }
