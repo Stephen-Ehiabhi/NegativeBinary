@@ -1,13 +1,19 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-
-
         //get the value from user
-        System.out.println("Program to find the sign modulus of a value: ");
+        System.out.println(" ");
+        System.out.println("________________________________________________");
+        System.out.println("This is a program to find the sign modulus, U1, and U3 of a value: ");
+        System.out.println("Formula to check SM -1^n-1");
+        System.out.println("Formula to check U1 -2^(n-1)+1");
+        System.out.println("Formula to check U2 -2^n-1");
+        System.out.println("________________________________________________");
+        System.out.println(" ");
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Input the value: ");
@@ -17,18 +23,19 @@ public class Main {
         if(Integer.parseInt(val) < 0){
             //remove the negative sign from value
             String newVal = val.replace("-","");
-            ToBinary(newVal);
+            System.out.println("The SM is: 1 " + "elements in " + ToBinary(newVal));
         }else{
-            //adding the digits to the array
-            ToBinary(val);
+            //adding the digits to the array and returning an output
+            System.out.println("The SM is: 0 " + "elements in " + ToBinary(val));
         }
     }
 
-    static void ToBinary (String val){
+    static List<Integer> ToBinary (String val){
         int n = Integer.parseInt(val), values;
-        List<Character> value = new ArrayList<Character>();
-        List<Integer> remainder = new ArrayList<Integer>();
-        List<Integer> binaryDigits = new ArrayList<Integer>();
+
+        List<Character> value = new ArrayList<>();
+        List<Integer> remainder = new ArrayList<>();
+        List<Integer> binaryDigits = new ArrayList<>();
 
         //loop through the value to get all the ints
        for(int i = 0; i < val.length(); i++){
@@ -36,6 +43,7 @@ public class Main {
            value.add(val.charAt(i));
        }
 
+       //main loop to divide the value until it can no longer be divided
        for(int i =0; n > 0; i++){
            //find the remainder
            values = n % 2;
@@ -47,11 +55,12 @@ public class Main {
 
        //reverse the remainder array
         for(int i = remainder.size()-1; n < remainder.size(); i--){
+            //stops the loop if the index is a negative number
             if(i<0) break;
+            //stores the value in the binary class
            binaryDigits.add(remainder.get(i));
         }
 
-        System.out.println(binaryDigits);
-
+        return binaryDigits;
     }
 }
